@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Web\JavaHamilkarr\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1110885551.index
+121383401.index
+4137628469.index
+2135586134.index
+2228650538.index
+1562779943.index
+1785313832.index

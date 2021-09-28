@@ -1,0 +1,23 @@
+<%!
+int num1 = 100;
+void printMethod() {
+
+}
+
+%>
+
+<%
+int num2 = 200;
+out.print("num2: " + num2);
+out.print("Hello Word");
+
+class InnerClass{
+	
+}
+Innerclass in = new InnerClass();
+
+/*
+* void printMethod(){
+	out.print() }
+*/
+%>
