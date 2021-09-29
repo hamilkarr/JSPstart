@@ -44,4 +44,23 @@ JSP 페이를 어덯게 처리할 것인지 설정하는 태그
          sql -> SQL 실행을 도와주는 편의 기능. 태그 형태로 제공
          functions -> 문자열 가공의 편의 기능을 제공
   <%@ taglib uri="경로" prefix="태그 식별자" %>
+
+  JSTL(taglib)은 별도의 라이브러리를 설치
+
+  <c:set /> 값 지정
+  <c:out /> 값 출력
+  <c:choose>
+    <c:when ...></c:when>
+    <c:ohterwise></c:ohterwise>
+  </c:choose>
+  <c:if ...></c:if>
+  <c:forEach ..>
+  
+  </c:forEach>
+
+P101 요약
+  page
+  include
+  taglib
+
   
