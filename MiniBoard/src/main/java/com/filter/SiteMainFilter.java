@@ -5,44 +5,59 @@ import javax.servlet.FilterConfig;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.ServletException;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-/*
+import com.core.*;
+
+/**
  * 사이트 전역 필터
  * 
  */
-
-public class SiteMainFilter implements Filter{
+public class SiteMainFilter implements Filter {
+	private FilterConfig filterConfig;
 
 	@Override
-	public void init(FilterConfig filterconfig) throws ServletException {
-		
+	public void init(FilterConfig filterConfig) throws ServletException {
+		this.filterConfig = filterConfig;
+
+		/** 데이터 베이스 설정 초기화 */
+		DB.init(filterConfig);
 	}
+
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		
+			throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
-		
+
+		// 사이트 root URL
+		String siteURL = request.getServletContext().getContextPath();
+		request.setAttribute("siteURL", siteURL);
+
 		String method = null;
-		if(request instanceof HttpServletRequest) {
-			HttpServletRequest req = (HttpServletRequest)request;
+		boolean isScriptCss = false;
+		if (request instanceof HttpServletRequest) {
+			HttpServletRequest req = (HttpServletRequest) request;
 			method = req.getMethod().toUpperCase();
+			String URI = req.getRequestURI();
+			// System.out.println("URI :" + URI);
+			if (URI.indexOf(".js") != -1 || URI.indexOf(".css") != -1 || URI.indexOf(".png") != -1) {
+				isScriptCss = true;
+			}
 		}
-		
-		if(method !=null && method.equals("GET")) {
-		
-		RequestDispatcher header = request.getRequestDispatcher("/outline/header.jsp");
-		header.include(request, response); }
+
+		if (method != null && method.equals("GET") && !isScriptCss) {
+			RequestDispatcher header = request.getRequestDispatcher("/outline/header.jsp");
+			header.include(request, response);
+		}
+
 		chain.doFilter(request, response);
-		if (method !=null && method.equals("GET")) {
-		RequestDispatcher footer = request.getRequestDispatcher("/outline/footer.jsp");
-		footer.include(request, response); }
-		// 후처리
-		
+
+		if (method != null && method.equals("GET") && !isScriptCss) {
+			RequestDispatcher footer = request.getRequestDispatcher("/outline/footer.jsp");
+			footer.include(request, response);
+		}
 	}
-	
 }
