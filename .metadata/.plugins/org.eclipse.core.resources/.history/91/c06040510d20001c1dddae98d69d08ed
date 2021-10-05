@@ -1,8 +1,0 @@
-<%!
-int num1 = 100;
-%>
-
-<%
-int num2 = 200;
-out.print("Hello Word");
-%>
