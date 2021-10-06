@@ -4,14 +4,10 @@
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="com.model.dao.BoardDAO"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
-    <fullyQualifiedTypeName name="javax.servlet.Filter"/>
     <fullyQualifiedTypeName name="javax.servlet.FilterConfig"/>
     <fullyQualifiedTypeName name="javax.servlet.HttpConstraintElement"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletException"/>
-    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.servlet.ServletFileUpload"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.disk.DiskFileItemFactory"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
@@ -26,4 +22,8 @@
     <fullyQualifiedTypeName name="com.core.DB"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="com.model.dto.Board"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="javax.servlet.Filter"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 </qualifiedTypeNameHistroy>

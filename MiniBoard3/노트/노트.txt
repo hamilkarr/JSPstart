@@ -1,0 +1,21 @@
+10-06-23:00
+  미니보드 처음부터 따라하기 시작.
+  깃 커밋 흐름대로 따라할 것.
+
+  HttpServlet 상속 받는 의미는?
+   doget, dopost 메소드를 상속받기 위해서. 
+   위 두 메서드는 request, response 매개변수를 갖는데 이 둘은 서블릿의 _service() 메서드의 내장 객체로서 웹기능을 구현하는데 핵심적인 기능을 한다.
+
+  RequestDispatcher 클래스의 역할은?
+
+    RequestDispatcher rd = request.getRequestDispatcher("/board/form.jsp");
+      
+    rd.include(request, respopnse);
+
+  Filter의 역할 (이건 대충 알겠음)
+    을 하기위해서 implement Filter. 
+    인터페이스 이해도.....
+      -> doFilter 구현해야함 -> 오버라이드
+
+
+  
