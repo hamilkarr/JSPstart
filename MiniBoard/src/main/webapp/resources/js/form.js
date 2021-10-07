@@ -9,7 +9,7 @@ $(function() {
 
 // 이미지 업로드 후 처리할 콜백 함수
 function callBackUploadImages(images) {
-	// console.log(images);
+	console.log(images);
 	if (!images) return;
 	
 	images = images.split("||");

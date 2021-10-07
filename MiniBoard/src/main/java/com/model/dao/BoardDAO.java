@@ -52,6 +52,38 @@ public class BoardDAO {
 	}
 
 	/**
+	 * 게시글 수정
+	 * 
+	 * @param request
+	 * @return
+	 */
+
+	public boolean edit(HttpServletRequest request) {
+		
+		if(request == null)
+			return false;
+			
+		String sql = "UPDATE board SET poster = ?, subject =?, content =?, WHERE idx = ?";
+
+		try (Connection conn = DB.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			request.setCharacterEncoding("utf-8");
+			int idx = Integer.parseInt(request.getParameter("idx"));
+			pstmt.setString(1, request.getParameter("poster"));
+			pstmt.setString(2, request.getParameter("subject"));
+			pstmt.setString(3, request.getParameter("contetn"));
+			pstmt.setInt(4, idx);
+
+			int rs = pstmt.executeUpdate(); // rs 1이상 -> 반영 성공
+			if (rs > 0)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	/**
 	 * 게시글 조회
 	 * 
 	 * @param idx

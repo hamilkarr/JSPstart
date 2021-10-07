@@ -36,11 +36,13 @@ public class FileUploadController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		String uploadedFiles = FileManager.upload(request);
+		System.out.println(uploadedFiles);
 		if (uploadedFiles == null) { // 업로드된 파일이 없는 경우, 이미지 파일이 아닌 경우
 			out.print("<script>alert('업로드 실패!');</script>");
 		} else {// 업로드가 된 경우
-			out.print("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js\">");
-			out.printf("<script>parent.parent.callbackUploadImage('%s')</script>",uploadedFiles);
+			out.print("테스트");
+			out.print("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js\"></script>");
+			out.printf("<script>parent.parent.callBackUploadImages('%s')</script>",uploadedFiles);
 		}
 	}
 }

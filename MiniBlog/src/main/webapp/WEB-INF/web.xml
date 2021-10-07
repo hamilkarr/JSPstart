@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<web-app>
+	<servlet>
+		<servlet-name>Blog_post</servlet-name>
+		<servlet-class>com.controller.PostController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Blog_post</servlet-name>
+		<url-pattern>/blog/post</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Blog_list</servlet-name>
+		<servlet-class>com.controller.ListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Blog_list</servlet-name>
+		<url-pattern>/blog</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Blog_edit</servlet-name>
+		<servlet-class>com.controller.EditController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Blog_edit</servlet-name>
+		<url-pattern>/blog/edit</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Blog_delete</servlet-name>
+		<servlet-class>com.controller.DeleteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Blog_delete</servlet-name>
+		<url-pattern>/blog/delete</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 필터 -->
+	<filter>
+		<filter-name>Blog_main</filter-name>
+		<filter-class>com.filter.BlogMainFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Blog_main</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+</web-app>
