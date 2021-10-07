@@ -5,6 +5,6 @@
 	for(Cookie cookie : cookies) {
 		String name = cookie.getName();
 		String value = cookie.getValue();
-		out.print("name = " + name + "value =" + value + "<br>");
+		out.print("name = " + name + ", value = " + value + "<br>");
 	}
 %>
