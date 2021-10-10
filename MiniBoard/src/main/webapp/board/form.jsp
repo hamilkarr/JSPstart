@@ -33,7 +33,7 @@
 	</dl>
 	<input type="reset" value="취소하기">
 	<c:choose>
-		<c:when test="${board == null }">
+		<c:when test='${board == null}'>
 		<input type="submit" value="작성하기">
 		</c:when>
 		<c:otherwise>

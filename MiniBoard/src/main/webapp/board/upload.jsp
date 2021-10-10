@@ -10,13 +10,4 @@
 			frm.submit();
 		});
 	});
-	
-	/*
-	window.addEventListener("DOMContentLoaded",function(){
-		const file = document.getElementByName("file")[0];
-		file.addEventListener("change",function(){
-			frm.submit();
-		});
-	});
-	*/
 </script>
