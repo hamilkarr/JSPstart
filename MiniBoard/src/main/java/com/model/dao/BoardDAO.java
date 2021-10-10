@@ -113,11 +113,22 @@ public class BoardDAO {
 	 * @return
 	 */
 	public ArrayList<Board> getList() {
+		return getList(1,5);
+	}
+	
+	public ArrayList<Board> getList(int page,int limit) {		
 		ArrayList<Board> list = new ArrayList<>();
 
-		String sql = "SELECT * FROM board ORDER BY idx DESC";
+		page = (page == 0)?1:page;
+		limit = (limit == 0)?5:limit;
+
+		int offset = (page - 1) * limit; // 시작 지점 
+
+		String sql = "SELECT * FROM board ORDER BY idx DESC LIMIT ?, ?";
 		try (Connection conn = DB.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
+			pstmt.setInt(1, offset);
+			pstmt.setInt(2, limit);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) { // 다음 투플이 있으면 true -> 다음으로 이동
 				list.add(new Board(rs));

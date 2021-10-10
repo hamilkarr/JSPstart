@@ -2,32 +2,37 @@ let page = 1;
 $(function() {
 	getBlog();
 	
-	$("#button").click(function(){
+	$("#button").click(function() {
 		getBlog();
-	})
+	});
 });
 
-function getBlog(page){
+
+function getBlog() {
 	page = page || 1;
 	
 	$.ajax({
 		url : "/MiniBoard/resources/blog.jsp",
 		type : "get",
-		data : { page:page },
-		dataType : html,
+		data : { page : page },
+		dataType :  "html",
 		success : function (res) {
 			const st = $("#blog_post").height();
-			if(res.trim()==""){
+			if (res.trim() == "") {
 				$("#button").remove();
 				return;
 			}
 			$("#blog_post").append(res);
-			page++
-			$("html,body").animate({scrollTop: st +"px"},1000,);
+			page++;
+			
+			$("html, body").animate({scrollTop : st + "px"}, 1000);
+			
+			
 			
 		},
 		error : function(err) {
-			console.error(err);
+			console.error(err);		
 		}
 	});
+	 
 }
