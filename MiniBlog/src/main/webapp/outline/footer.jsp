@@ -1,2 +1,4 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-푸터 페이지....
+	<iframe name="ifrmHidden" width="100%" height="500" frameborder="0"></iframe>
+</body>
+</html>

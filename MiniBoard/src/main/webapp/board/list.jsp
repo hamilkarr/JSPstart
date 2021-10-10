@@ -10,9 +10,7 @@ ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
 <ul>
 <c:forEach var="board" items="${list}">
 	<li>
-		<a href='view?idx=${board.idx}'>
-			${board.subject} / ${board.poster} / ${board.regDt}
-		</a>
+		<a href='view?idx=${board.idx}'> ${board.subject} / ${board.poster} / ${board.regDt} </a>
 	</li>
 </c:forEach>
 </ul>

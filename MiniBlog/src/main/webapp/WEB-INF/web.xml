@@ -9,6 +9,14 @@
 		<url-pattern>/blog/post</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>Blog_View</servlet-name>
+		<servlet-class>com.controller.ViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Blog_View</servlet-name>
+		<url-pattern>/blog/view</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Blog_list</servlet-name>
 		<servlet-class>com.controller.ListController</servlet-class>
 	</servlet>
@@ -37,6 +45,22 @@
 	<filter>
 		<filter-name>Blog_main</filter-name>
 		<filter-class>com.filter.BlogMainFilter</filter-class>
+		<init-param>
+			<param-name>DBDriver</param-name>
+			<param-value>com.mysql.cj.jdbc.Driver</param-value>
+		</init-param>
+		<init-param>
+			<param-name>DBUrl</param-name>
+			<param-value>jdbc:mysql://localhost:3306/miniblog</param-value>
+		</init-param>
+		<init-param>
+			<param-name>DBUser</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param>
+			<param-name>DBPass</param-name>
+			<param-value>aA!12345</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>Blog_main</filter-name>

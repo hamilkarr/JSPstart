@@ -70,7 +70,7 @@ public class BoardDAO {
 			int idx = Integer.parseInt(request.getParameter("idx"));
 			pstmt.setString(1, request.getParameter("poster"));
 			pstmt.setString(2, request.getParameter("subject"));
-			pstmt.setString(3, request.getParameter("contetn"));
+			pstmt.setString(3, request.getParameter("content"));
 			pstmt.setInt(4, idx);
 
 			int rs = pstmt.executeUpdate(); // rs 1이상 -> 반영 성공
