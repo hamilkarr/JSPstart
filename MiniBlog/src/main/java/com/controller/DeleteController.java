@@ -28,7 +28,7 @@ public class DeleteController extends HttpServlet {
 		int idx = Integer.parseInt(req.getParameter("idx"));
 		boolean result = dao.delete(idx);
 		if (result) {
-			resp.sendRedirect("/MiniBlog/blog"); //list 주의
+			resp.sendRedirect("/MiniBlog/blog");
 		} else {
 			out.print("<script>alert('게시글 삭제에 실패했습니다.');history.back();</script>");
 		}

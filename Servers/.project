@@ -3,7 +3,6 @@
 	<name>Servers</name>
 	<comment></comment>
 	<projects>
-		<project>MiniBoard</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>

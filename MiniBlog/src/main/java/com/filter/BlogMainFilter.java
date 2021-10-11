@@ -10,12 +10,12 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import com.core.DB;
+import com.core.*;
 
 /**
  * 사이트 전역 필터
  */
-public class BlogMainFilter implements Filter {
+public class BlogMainFilter implements Filter {	
 	private FilterConfig filterConfig;
 	private String[] staticDirs = { "resources" };
 
@@ -46,7 +46,8 @@ public class BlogMainFilter implements Filter {
 	public void outlineHeader(ServletRequest req, ServletResponse resp) throws ServletException, IOException {
 		if (isOutlineRequired(req)) {
 			resp.setContentType("text/html; charset=utf-8");
-			RequestDispatcher header = req.getRequestDispatcher("/outline/header.jsp");
+			String headerJSP = isPopup(req)?"/outline/popup_header.jsp":"/outline/header.jsp";
+			RequestDispatcher header = req.getRequestDispatcher(headerJSP);
 			header.include(req, resp);
 		}
 	}
@@ -55,16 +56,19 @@ public class BlogMainFilter implements Filter {
 	public void outlineFooter(ServletRequest req, ServletResponse resp) throws ServletException, IOException {
 		if (isOutlineRequired(req)) {
 			resp.setContentType("text/html; charset=utf-8");
-			RequestDispatcher footer = req.getRequestDispatcher("/outline/footer.jsp");
+			String footerJSP = isPopup(req)?"/outline/popup_footer.jsp":"/outline/footer.jsp";			
+			RequestDispatcher footer = req.getRequestDispatcher(footerJSP);
 			footer.include(req, resp);
 		}
 	}
 
 	/**
-	 * 헤더 푸터가 필요한지를 체크
+	 * 헤더 푸터가 필요한지를 체크 *
 	 * 
-	 * @param
-	 * @return
+	 * @param req	 * 
+	 * @return true / false
+	 * 1. method != GET  -> false
+	 * 2. URI.indexOF(/resources) != -1  -> false
 	 */
 	public boolean isOutlineRequired(ServletRequest req) {
 		if (req instanceof HttpServletRequest) {
@@ -83,4 +87,20 @@ public class BlogMainFilter implements Filter {
 		return true;
 	}
 
+	/**
+	 * Check IsPopup Page
+	 * 
+	 * @param req
+	 * @return true - 팝업 / false - 팝업아님
+	 */
+	public boolean isPopup(ServletRequest req) {
+		if (req instanceof HttpServletRequest) {
+			HttpServletRequest request = (HttpServletRequest) req;
+			String URI = request.getRequestURI();
+			if (URI.indexOf("/popup") != -1) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
