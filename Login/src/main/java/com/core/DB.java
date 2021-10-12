@@ -18,7 +18,7 @@ public class DB {
 		init(
 				config.getInitParameter("DBDriver"),
 				config.getInitParameter("DBUrl"),
-				config.getInitParameter("DBUSer"),
+				config.getInitParameter("DBUser"),
 				config.getInitParameter("DBPass")
 				);
 	}

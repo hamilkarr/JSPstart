@@ -38,9 +38,13 @@ public class JoinController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		try {
-		MemberDao dao = new MemberDao();
-		dao.join(request); }
-		catch(AlertException e) {
+			MemberDao dao = new MemberDao();
+			boolean result = dao.join(request);
+			if (!result) {// 회원 가입 실패
+				throw new AlertException("회원 가입 실패!");
+			}			
+			out.print("<script>parent.location.href='login';</script>");
+		} catch(AlertException e) {
 			out.print("<script>alert('" + e.getMessage() + "');</script>");
 			return;
 		}
