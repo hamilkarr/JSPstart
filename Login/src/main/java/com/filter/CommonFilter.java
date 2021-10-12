@@ -11,11 +11,12 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import com.core.DB;
+import com.models.dao.MemberDao;
 
 
 public class CommonFilter implements Filter {
 
-	private String[] staticDirs = {"public"};
+	private String[] staticDirs = {"public","logout"};
 	
 	@Override
 	public void init(FilterConfig filterconfig) throws ServletException {
@@ -26,11 +27,12 @@ public class CommonFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		// 로그인 처리
+		MemberDao.init(request);
 		
 		// 기준 URI
 		String siteURL = request.getServletContext().getContextPath();
-		request.setAttribute("siteURL", siteURL);
-		
+		request.setAttribute("siteURL", siteURL);		
 		
 		// 헤더 출력
 		printHeader(request, response);
@@ -66,7 +68,7 @@ public class CommonFilter implements Filter {
 		 * 		HttpServletRequest - getMethod() 
 		 * 2. 정적 경로인 경우 헤더 푸터 출력 제외(return false)
 		 * 		URI에 정적 경로가 포함되어 있으면 false
-		 * 		HttpServletRequest - getRequestURI();		 * 
+		 * 		HttpServletRequest - getRequestURI();	
 		 */
 		if (request instanceof HttpServletRequest) {
 			HttpServletRequest req = (HttpServletRequest)request;
